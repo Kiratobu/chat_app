@@ -9,8 +9,7 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-
 WORKDIR src
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0"]
+CMD ["uvicorn", "auth.app:app", "--host", "0.0.0.0","--log-level","info"]
 

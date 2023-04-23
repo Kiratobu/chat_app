@@ -1,2 +1,6 @@
 fastapi[all]
 fastapi-users[beanie]
+python-dotenv
+uvicorn[standard]
+aiosqlite
+requests

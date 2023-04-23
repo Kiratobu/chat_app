@@ -7,7 +7,7 @@ services:
       - .env
     container_name: chat_app
     ports:
-      - 9999:8000
+      - 8000:8000
     depends_on:
       - mongodb
 
@@ -16,7 +16,7 @@ services:
     env_file:
       - .env
     ports:
-      - "27017:27017"
+      - 27017:27017
     environment:
       - "MONGO_INITDB_DATABASE=${MONGO_DB}"
       - "MONGO_INITDB_ROOT_USERNAME=${MONGO_USER}"
