@@ -11,5 +11,5 @@ COPY . .
 
 WORKDIR src
 
-CMD ["uvicorn", "auth.app:app", "--host", "0.0.0.0","--log-level","info"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0","--log-level","info"]
 
