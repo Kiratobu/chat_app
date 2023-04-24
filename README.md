@@ -1,2 +1,33 @@
-# chat_app
-Chat application with using FastApi, MongoDB, Websokets, Docker 
+# Table of contents
+<!-- - [Description](#description)
+- [Setting](#how-to-use) -->
+
+
+## Description
+Real-time chat application
+
+
+This app uses:
+- Python FastAPI+WebSockets [docs](https://fastapi.tiangolo.com/)
+- MongoDB [docs](https://docs.mongodb.com/manual/)
+- Docker [docs](https://docs.docker.com/engine/reference/run/)
+
+## Setting up and running
+
+Creating .env file with variables: 
+- MONGO_HOST
+- MONGO_PORT
+- MONGO_USER
+- MONGO_PASS
+- MONGO_DB
+- SECRET
+
+
+Run docker container:
+
+<b>docker-compose -f   docker-compose.yml up -d --build</b>
+
+Link for docs: 
+<b>http://localhost:8000/docs/</b>
+
+For using Websockets creating new User, new Room and append new User to Room.
