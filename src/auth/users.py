@@ -10,7 +10,11 @@ from fastapi_users.authentication import (
 )
 from fastapi_users.db import BeanieUserDatabase, ObjectIDIDMixin
 
-from auth.db import User, get_user_db
+from auth.db import User, get_user_db, UserInDB
+
+import sys
+sys.path.insert(0, '..')
+from src.utils import format_ids
 
 SECRET = "SECRET"
 
@@ -42,3 +46,12 @@ auth_backend = AuthenticationBackend(
 fastapi_users = FastAPIUsers[User, PydanticObjectId](get_user_manager, [auth_backend])
 
 current_active_user = fastapi_users.current_user(active=True)
+
+async def get_user(name) -> UserInDB:
+    users_collection = get_user_db()
+    row = await users_collection.find_one({"username": name})
+    if row is not None:
+        row = format_ids(row)
+        return row
+    else:
+        return None

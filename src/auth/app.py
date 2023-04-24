@@ -4,6 +4,8 @@ from auth.db import User
 from auth.schemas import UserCreate, UserRead, UserUpdate
 from auth.users import auth_backend, current_active_user, fastapi_users
 
+
+
 router = APIRouter(
     prefix="/auth",
     tags=["Auth"]
@@ -21,7 +23,4 @@ router.include_router(
 )
 
 
-# Checking authentication
-@router.get("/authenticated-route")
-async def authenticated_route(user: User = Depends(current_active_user)):
-    return {"message": f"Hello {user.email}!"}
+
