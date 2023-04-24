@@ -1,4 +1,4 @@
-from datetime import datetime 
+from datetime import datetime
 from beanie import Document
 from bson import ObjectId
 from fastapi_users.db import BeanieBaseUser, BeanieUserDatabase

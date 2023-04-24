@@ -14,6 +14,7 @@ from auth.db import User, get_user_db, UserInDB
 
 import sys
 sys.path.insert(0, '..')
+from src.database import db
 from src.utils import format_ids
 
 SECRET = "SECRET"
@@ -48,7 +49,7 @@ fastapi_users = FastAPIUsers[User, PydanticObjectId](get_user_manager, [auth_bac
 current_active_user = fastapi_users.current_user(active=True)
 
 async def get_user(name) -> UserInDB:
-    users_collection = get_user_db()
+    users_collection = db['User']
     row = await users_collection.find_one({"username": name})
     if row is not None:
         row = format_ids(row)
