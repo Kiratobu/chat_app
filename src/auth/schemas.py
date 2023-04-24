@@ -1,7 +1,7 @@
 from beanie import PydanticObjectId
 from fastapi_users import schemas
 
-
+#Schemas for User models
 class UserRead(schemas.BaseUser[PydanticObjectId]):
     username: str
 

@@ -18,9 +18,7 @@ router.include_router(
 router.include_router(
     fastapi_users.get_register_router(UserRead, UserCreate),
 )
-router.include_router(
-    fastapi_users.get_users_router(UserRead, UserUpdate),
-)
+
 
 
 

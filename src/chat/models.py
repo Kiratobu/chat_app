@@ -3,10 +3,11 @@ from typing import List, Optional
 
 from bson import ObjectId
 from auth.db import User
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, Field
+from beanie import Document
 
 
-class Message(BaseModel):
+class Message(Document, BaseModel):
     user: User
     content: str = None
 
@@ -16,7 +17,7 @@ class MessageInDB(Message):
     timestamp: datetime = Field(default_factory=datetime.utcnow)
 
 
-class Room(BaseModel):
+class Room(Document, BaseModel):
     room_name: str
     members: Optional[List[User]] = []
     messages: Optional[List[MessageInDB]] = []

@@ -15,6 +15,6 @@ def format_ids(nested_dictionary):
                     new_arr.append(item)
             nested_dictionary[key] = new_arr
         else:
-            if key == "_id":
+            if key == "_id" or key=='id':
                 nested_dictionary[key] = str(value)
     return nested_dictionary

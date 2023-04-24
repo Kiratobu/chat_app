@@ -1,5 +1,4 @@
 from typing import Optional
-
 from beanie import PydanticObjectId
 from fastapi import Depends, Request
 from fastapi_users import BaseUserManager, FastAPIUsers
@@ -16,13 +15,13 @@ import sys
 sys.path.insert(0, '..')
 from src.database import db
 from src.utils import format_ids
+from src.config import SECRET
 
-SECRET = "SECRET"
+SECRET = f"{SECRET}"
 
 
 class UserManager(ObjectIDIDMixin, BaseUserManager[User, PydanticObjectId]):
     
-
     async def on_after_register(self, user: User, request: Optional[Request] = None):
         print(f"User {user.id} has registered.")
 
@@ -30,7 +29,7 @@ class UserManager(ObjectIDIDMixin, BaseUserManager[User, PydanticObjectId]):
 async def get_user_manager(user_db: BeanieUserDatabase = Depends(get_user_db)):
     yield UserManager(user_db)
 
-
+# Authentication logic
 bearer_transport = BearerTransport(tokenUrl="auth/login")
 
 

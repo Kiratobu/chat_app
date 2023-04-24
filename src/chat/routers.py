@@ -1,10 +1,14 @@
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel
-from .controllers import get_room, insert_room,add_user_to_room#, get_rooms
+from .controllers import (
+                          get_room, 
+                          insert_room,
+                          add_user_to_room, 
+                          get_rooms,
+                          )
 from auth.db import User
 from auth.users import current_active_user
-# import sys
-# sys.path.insert(0, '..')
+
 
 from src.database import db
 from src.utils import format_ids
@@ -16,6 +20,7 @@ class RoomCreateRequest(BaseModel):
     username: str
     room_name: str
 
+#Room endpoints
 @router.post("/room", tags=["Rooms"])
 async def create_room(
     request: RoomCreateRequest,
@@ -24,10 +29,9 @@ async def create_room(
     """
     Create a room
     """
-    # rooms= await db['Room'].find((),{'_id':0}).to_list(length=10)
-    response = await insert_room(request.username, request.room_name, db['Room'])
+    response = await insert_room(request.username, 
+                                 request.room_name, db['Room'])
     return response
-
 
 
 @router.get("/room/{room_name}", tags=["Rooms"])
@@ -51,12 +55,13 @@ async def add_user_to_room_members(
     row = await add_user_to_room(current_user.username, room_name)
     return row
 
-# @router.get("/rooms", tags=["Rooms"])
-# async def get_all_rooms(
-#     #, current_user: User = Depends(get_current_active_user)
-# ):
-#     """
-#     Fetch all available rooms
-#     """
-#     rooms = await get_rooms()
-#     return rooms
+@router.get("/rooms", tags=["Rooms"])
+async def get_all_rooms(
+    #, current_user: User = Depends(get_current_active_user)
+):
+    """
+    Fetch all available rooms
+    """
+    rooms = await get_rooms()
+    return rooms
+
