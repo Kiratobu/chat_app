@@ -1,7 +1,3 @@
-# Table of contents
-<!-- - [Description](#description)
-- [Setting](#how-to-use) -->
-
 
 ## Description
 Real-time chat application
