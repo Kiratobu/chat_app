@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import List, Optional
 
 from bson import ObjectId
-from auth.db import User
+from auth.models import User
 from pydantic import BaseModel, Field
 from beanie import Document
 
@@ -20,7 +20,6 @@ class MessageInDB(Message):
 class Room(Document, BaseModel):
     room_name: str
     members: Optional[List[User]] = []
-    messages: Optional[List[MessageInDB]] = []
     last_pinged: datetime = Field(default_factory=datetime.utcnow)
     active: bool = False
 

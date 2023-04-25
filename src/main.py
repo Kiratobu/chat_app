@@ -21,7 +21,7 @@ from auth.users import current_active_user
 from chat.models import Message,Room
 from chat.notifier import ConnectionManager
 from database import db
-from auth.db import User
+from auth.models import User
 from chat.controllers import (
     add_user_to_room, 
     get_room, 
@@ -31,9 +31,10 @@ from chat.controllers import (
     )
 
 
-logger = logging.getLogger(__name__)
 
 app = FastAPI()
+
+logger = logging.getLogger(__name__)
 
 manager = ConnectionManager()
 
@@ -98,6 +99,7 @@ async def websocket_endpoint(websocket: WebSocket,
                     }
                     await manager.broadcast(f"{json.dumps(data, default=str)}")
                     await manager.disconnect(websocket, room_name)
+                # send message
                 if "type" in message_data and message_data["type"] == "message":
                     await upload_message_to_room(data)
                     logger.info(f"DATA RECIEVED: {data}")

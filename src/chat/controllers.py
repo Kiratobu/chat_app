@@ -7,9 +7,9 @@ from bson import ObjectId
 
 from src.database import db
 from src.utils import format_ids
-from .models import RoomInDB,MessageInDB
+from .models import RoomInDB
 from auth.users import get_user
-from auth.db import User
+from auth.models import User
 
 logger = logging.getLogger(__name__)
 

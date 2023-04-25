@@ -6,7 +6,7 @@ from .controllers import (
                           add_user_to_room, 
                           get_rooms,
                           )
-from auth.db import User
+from auth.models import User
 from auth.users import current_active_user
 
 

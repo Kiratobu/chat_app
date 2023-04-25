@@ -9,7 +9,7 @@ from fastapi_users.authentication import (
 )
 from fastapi_users.db import BeanieUserDatabase, ObjectIDIDMixin
 
-from auth.db import User, get_user_db, UserInDB
+from auth.models import User, get_user_db, UserInDB
 
 import sys
 sys.path.insert(0, '..')

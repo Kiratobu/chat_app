@@ -1,8 +1,3 @@
-# Table of contents
-<!-- - [Description](#description)
-- [Setting](#how-to-use) -->
-
-
 ## Description
 Real-time chat application
 
@@ -15,12 +10,12 @@ This app uses:
 ## Setting up and running
 
 Creating .env file with variables: 
-- MONGO_HOST
-- MONGO_PORT
-- MONGO_USER
-- MONGO_PASS
-- MONGO_DB
-- SECRET
+- MONGO_PORT=27017
+- MONGO_USER=user_1
+- MONGO_PASS=some_pass
+- MONGO_DB=db_chat
+
+- SECRET=SECRET
 
 
 Run docker container:
